@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { createContext } from "react";
-import { onAuthStateChanged,signOut } from 'firebase/auth'
+import { onAuthStateChanged,signOut,signInWithEmailAndPassword} from 'firebase/auth'
 import { auth } from "../firebaseApp";
 import { useEffect } from "react"
 
@@ -20,6 +20,7 @@ export const UserProvider=({children})=>{
         await signOut(auth)
     }
     const loginUser=async (email,pw)=>{
+      console.log(email,pw)
         try{
           await signInWithEmailAndPassword(auth,email,pw)
         }catch(err){
